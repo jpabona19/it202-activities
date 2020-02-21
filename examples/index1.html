@@ -1,0 +1,22 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		
+	</head>
+	
+	<body>
+		
+		<script src="https://unpkg.com/dexie@latest/dist/dexie.js"></script>
+		
+		<script>
+			var db = new Dexie("MyFriendDB");
+			db.version(1).stores({
+				friends: '++id,name,age',
+				enemies: '++id,name'
+			});
+			
+			db.friends.add({name: "Foo", age: 42, hometown: "Chicago"});
+			
+		</script>	
+	</body>
+</html>
