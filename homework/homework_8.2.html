@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>Simple Map</title>
+    <meta name="viewport" content="initial-scale=1.0">
+    <meta charset="utf-8">
+    <style>
+      /* Always set the map height explicitly to define the size of the div
+       * element that contains the map. */
+      #map {
+        height: 100%;
+      }
+      /* Optional: Makes the sample page fill the window. */
+      html, body {
+        height: 100%;
+        margin: 0;
+        padding: 0;
+      }
+    </style>
+  </head>
+  <body>
+    <div id="map"></div>
+    <script>
+      var map, marker, uic, contentString, infowindow;
+      function initMap() {
+		uic = {lat: 41.8698, lng: -87.6496};
+        map = new google.maps.Map(document.getElementById('map'), {
+          center: uic,
+          zoom: 8
+        });
+		marker = new google.maps.Marker({position: uic, map: map});
+		
+		contentString = '<div id="content">'+
+      '<div id="siteNotice">'+
+      '</div>'+
+      '<h1 id="firstHeading" class="firstHeading">UIC</h1>'+
+      '<div id="bodyContent">'+
+      '<p>The University of Illinois at Chicago is a public research university in Chicago, Illinois. Its campus is in the Near West Side community area, adjacent to the Chicago Loop.</p>'+
+      '<p><img src="https://seeklogo.com/images/U/university-of-illinois-at-chicago-uic-logo-0FEB5BC47D-seeklogo.com.png" ></p>'+
+      '</div>'+
+      '</div>';  
+		  
+		  
+		  
+		  
+		infowindow = new google.maps.InfoWindow({
+    		content: contentString
+  		});  
+		
+		marker.addListener('click', function() {
+    		infowindow.open(map, marker);
+  		});  
+		  
+		  
+		  
+      }
+    </script>
+    <script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyB3OimhANJyTXHyq1paiF2GLLR1Ww5f4QE&callback=initMap"
+    async defer></script>
+  </body>
+</html>
