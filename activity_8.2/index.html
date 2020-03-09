@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>Simple Map</title>
+    <meta name="viewport" content="initial-scale=1.0">
+    <meta charset="utf-8">
+    <style>
+      /* Always set the map height explicitly to define the size of the div
+       * element that contains the map. */
+      #map {
+        height: 100%;
+      }
+      /* Optional: Makes the sample page fill the window. */
+      html, body {
+        height: 100%;
+        margin: 0;
+        padding: 0;
+      }
+    </style>
+  </head>
+  <body>
+    <div id="map"></div>
+	<script src="data.js"></script>
+    <script>
+      var map, marker, uic, contentString;
+      function initMap() {
+		uic = {lat: 41.8698, lng: -87.6496};
+        map = new google.maps.Map(document.getElementById('map'), {
+          center: uic,
+          zoom: 8
+        });
+		  
+		for(let i of inspection_data){
+			let infowindow = new google.maps.InfoWindow({
+    			content: i.dba_name
+  			}); 
+			
+			let marker = new google.maps.Marker({
+				position({lat: parseFloat(i["latitude"]), lng: parse })
+			});
+			
+			marker.addListener('click', function() {
+				infowindow.open(map, marker);
+			});  		
+		}
+		  
+		  
+      }
+    </script>
+    <script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyB3OimhANJyTXHyq1paiF2GLLR1Ww5f4QE&callback=initMap"
+    async defer></script>
+  </body>
+</html>
