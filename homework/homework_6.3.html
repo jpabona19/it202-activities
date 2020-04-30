@@ -1,14 +1,56 @@
 <!DOCTYPE html>
 <html>
-    <head><title>Canvas Demo</title></head>
+    <head>
+        <meta charset="UTF-8">
+        <title>Canvas Demo</title>
+        <style>
+        </style>
+    </head>
     <body>
-		<style>
-			body{background-color: yellow;}
-		</style>
-        <canvas id="myCanvas" width="400" height="400">
+        <canvas id="canvas-demo" width="400" height="400">
+             This will be displayed if your browser doesn't
+             support the canvas element. The closing tag is
+             necessary.
         </canvas>
-		<p>UIN: 674324147</p>
-        <script src = canvas-demo.js>
-		</script>
+        <script>
+            let canvas = document.querySelector("#canvas-demo").getContext("2d");
+            console.log(canvas);
+            window.onload = function() {    
+                canvas.beginPath();
+                canvas.fillStyle = "#F7D12C";
+                canvas.fillRect(0, 0, 500, 500);
+                UIN();
+                shape();
+                letter();
+            }
+            
+            const shape = () => {
+                canvas.fillStyle = "#F980DD";
+                canvas.fillRect(30, 30, 30, 30);
+            }
+		
+				
+            
+            const letter =() => {
+                canvas.strokeStyle="green";
+                canvas.lineWidth=10;
+                canvas.moveTo(200, 100);
+                canvas.lineTo(300, 100);
+                canvas.moveTo(250, 100);
+                canvas.lineTo(250, 200);
+                canvas.moveTo(200, 200);
+                canvas.lineTo(250, 200);
+                canvas.stroke();
+            }
+			
+			
+			const UIN = () => {
+                canvas.font = "50px Arial";
+                canvas.strokeStyle = "blue";
+                canvas.strokeText("674324147", 20, 400);
+                canvas.stroke();
+            }
+            
+        </script>
     </body>
 </html>
